@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ToDo リスト</h1>
+        
+        <!-- タスク追加フォーム -->
+        <div class="task-form">
+            <form method="POST" action="/"> 
+                <input type="text" name="content" placeholder="新しいタスクを入力" required>
+                <button type="submit">追加</button>
+            </form>
+        </div>
+
+        <!-- タスクリスト -->
+        <div class="task-list">
+            <ul>
+                {% for task in tasks %}<!--JINJA2ではこの書き方でfor文を書く-->
+                  <li class="task-item {% if task.done %}completed{% endif %}">
+                    <!--チェックボックス部分-->
+                   <form class="toggle-form" method="POST" action="{{ url_for('toggle_task', task_id=task.id) }}" 
+                   style="display: inline;">
+                    <input type="checkbox" onchange="this.form.submit()" {% if task.done %}checked{% endif %}>
+                   </form>
+
+                   <!--ただのタスク表示-->
+                   <span class="task-content" onclick="showEditForm({{loop.index0}})">{{ task.content }}</span>
+                   
+                   <!--編集の部分-->
+                 <form class="edit-form" id="edit-form-{{loop.index0}}" method="POST" action="{{ url_for('edit_task', task_id=task.id) }}" style="display: none;">
+                    <input type="text" name="new_content" value="{{ task.content }}" required>
+                    <div class="button-group">
+                     <button type="submit" class="edit-btn">保存</button>
+                     <button type="button" class="cancel-btn" onclick="hideEditForm({{loop.index0}})">キャンセル</button>
+                    </div>
+                 </form>
+
+                   <!-- タスク削除 -->
+                   <form class="delete-form" method="POST" action="{{ url_for('delete_task', task_id=task.id) }}" 
+                  style="display: inline;">
+                    <button type="submit" class="delete-btn">削除</button>
+                   </form>
+                  </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script>
+        function showEditForm(index) {
+            document.querySelector(`#edit-form-${index}`).style.display = 'inline';
+            document.querySelector(`#edit-form-${index} input`).focus();
+        }
+        
+        function hideEditForm(index) {
+            document.querySelector(`#edit-form-${index}`).style.display = 'none';
+        }
+        </script>    
+</body>
+</html>
