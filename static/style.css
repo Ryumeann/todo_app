@@ -63,6 +63,10 @@ h1 {
     border-radius: 4px;
 }
 
+
+
+
+
 /*削除機能関連の装飾*/
 .delete-btn {
     background-color: #ff4444;
@@ -110,6 +114,9 @@ input[type="checkbox"] {
 
 
 
+
+
+
 /*編集機能の装飾*/
 .edit-form {
     flex-grow: 1;     /* 追加：利用可能なスペースを埋める */
@@ -153,4 +160,92 @@ input[type="checkbox"] {
     display: flex;    /* 追加：ボタンを横並びに */
     gap: 5px;         /* 追加：ボタン間の間隔 */
     flex-shrink: 0;   /* 追加：ボタンは縮まない */
+}
+
+
+
+
+
+
+
+
+/* 認証フォーム関連のスタイル */
+.auth-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.auth-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.auth-links a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* アラートメッセージのスタイル */
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+}
+
+
+/* index.htmlアクセス時のユーザー名表示とログアウト関連の装飾 */
+
+/* ユーザーヘッダーのスタイル */
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.welcome-message {
+    margin: 0;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+.logout-form {
+    margin: 0;
 }
