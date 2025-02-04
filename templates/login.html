@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン - ToDo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ログイン</h1>
+        
+        <!-- フラッシュメッセージの表示 -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- ログインフォーム -->
+        <div class="auth-form">
+            <form method="POST" action="{{ url_for('login') }}">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="ユーザー名" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="パスワード" required>
+                </div>
+                <button type="submit">ログイン</button>
+            </form>
+            <div class="auth-links">
+                <p>アカウントをお持ちでない方は<a href="{{ url_for('register') }}">新規登録</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

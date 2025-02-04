@@ -8,6 +8,16 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- ユーザー情報とログアウトボタンを追加 -->
+        <div class="user-header">
+            <p class="welcome-message">ようこそ、{{ current_user.username }}さん</p>
+            <form action="{{ url_for('logout') }}" method="GET" class="logout-form">
+                <button type="submit" class="logout-btn">ログアウト</button>
+            </form>
+        </div>
+
+        
         <h1>ToDo リスト</h1>
         
         <!-- タスク追加フォーム -->
@@ -51,8 +61,6 @@
             </ul>
         </div>
     </div>
-
-
 
     <script>
         function showEditForm(index) {
