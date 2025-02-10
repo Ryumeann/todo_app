@@ -60,7 +60,7 @@ class Task(db.Model):
 with app.app_context():
     db.create_all()
 
-# ユーザー認証関連の関数
+# ユーザー認証を継続的に追跡
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
