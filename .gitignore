@@ -12,3 +12,15 @@ todo_env/
 
 # VS Code設定
 .vscode/
+
+#セッション用の秘密鍵
+instance/
+
+#Windowsデフォルト文字コードのバックアップファイル
+*.reg
+
+#パッケージリスト
+*.txt
+
+#EC2インスタンス接続時の秘密鍵ファイル
+*.pem
